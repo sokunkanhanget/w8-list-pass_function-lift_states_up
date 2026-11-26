@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
 
 import '../theme/theme.dart';
+import '../../data/profile_data.dart';
+import '../../model/profile_tile_model.dart';
 
 class ProfileApp extends StatelessWidget {
-  const ProfileApp({super.key});
+  const ProfileApp({
+    super.key,
+    required this.profile,
+
+  });
+
+  final ProfileData profile;
 
   @override
   Widget build(BuildContext context) {
@@ -17,45 +25,50 @@ class ProfileApp extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            const SizedBox(height: 40),
-            const CircleAvatar(
+      body: ListView(
+        padding: const EdgeInsets.only(top: 40),
+        children: [
+          Center(
+            child: CircleAvatar(
               radius: 60,
-              backgroundImage: AssetImage(
-                  'assets/images/w8/aang.png'), 
+              backgroundImage: AssetImage(ronanProfile.avatarUrl),
             ),
-            const SizedBox(height: 20),
-            Text(
-              'Ronan OGOR',
+          ),
+
+          const SizedBox(height: 20),
+
+          Center(
+            child: Text(
+              profile.name,
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
                 color: AppColors.primary,
               ),
             ),
-            const Text(
-              'Flutter Developer',
-              style: TextStyle(
+          ),
+
+          Center(
+            child: Text(
+              profile.position,
+              style: const TextStyle(
                 fontSize: 16,
                 color: Colors.grey,
               ),
             ),
-            const SizedBox(height: 20),
-            const ProfileTile(
-              icon: Icons.phone,
-              title: "Phone Number",
-              data: "+123 456 7890",
+          ),
+
+          const SizedBox(height: 20),
+
+          // Generate tiles dynamically
+          ...profile.tiles.map(
+            (tile) => ProfileTile(
+              icon: tile.icon,
+              title: tile.title,
+              data: tile.value,
             ),
-             const ProfileTile(
-              icon: Icons.location_on,
-              title: "Address",
-              data: "Cambodia",
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

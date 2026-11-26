@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 class TemperatureScreen extends StatelessWidget {
@@ -14,43 +15,70 @@ class TemperatureScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(40.0),
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            const Icon(
-              Icons.thermostat_outlined,
-              size: 120,
-              color: Colors.white,
+    return Scaffold(
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color(0xff16C062),
+              Color(0xff00BCDC),
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(40.0),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                const Icon(
+                  Icons.thermostat_outlined,
+                  size: 120,
+                  color: Colors.white,
+                ),
+                const Center(
+                  child: Text(
+                    "Converter",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 45,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 50),
+                const Text(
+                  "Temperature in Degrees:",
+                  style: TextStyle(color: Colors.white),
+                ),
+                const SizedBox(height: 10),
+                TextField(
+                  decoration: inputDecoration,
+                  style: const TextStyle(color: Colors.white),
+                  keyboardType: const TextInputType.numberWithOptions(
+                    decimal: true,
+                    signed: true,
+                  ),
+                ),
+                const SizedBox(height: 30),
+                const Text(
+                  "Temperature in Fahrenheit:",
+                  style: TextStyle(color: Colors.white),
+                ),
+                const SizedBox(height: 10),
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: const Text('test'),
+                ),
+              ],
             ),
-            const Center(
-              child: Text(
-                "Converter",
-                style: TextStyle(color: Colors.white, fontSize: 45),
-              ),
-            ),
-            const SizedBox(height: 50),
-            const Text("Temperature in Degrees:"),
-            const SizedBox(height: 10),
-            TextField(
-              decoration: inputDecoration,
-              style: const TextStyle(color: Colors.white),
-            ),
-            const SizedBox(height: 30),
-            const Text("Temperature in Fahrenheit:"),
-            const SizedBox(height: 10),
-            Container(
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: const Text('test'),
-            ),
-          ],
+          ),
         ),
       ),
     );

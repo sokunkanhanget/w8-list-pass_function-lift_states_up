@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'temperature_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -26,7 +27,14 @@ class WelcomeScreen extends StatelessWidget {
         ),
         const SizedBox(height: 15),
         OutlinedButton(
-          onPressed: null,
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => TemperatureScreen(),
+              ),
+    );
+          },
           style: OutlinedButton.styleFrom(
               side: const BorderSide(width: 1.0, color: Colors.white)),
           child: const Text('Start to convert',

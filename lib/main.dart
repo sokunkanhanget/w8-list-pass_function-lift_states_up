@@ -4,7 +4,7 @@ import 'ex3/main.dart' as ex3;
 import 'ex4/main.dart' as ex4;
 
 // Which exercise to show: change the number, then press R (hot restart).
-const exercise = 1;
+const exercise = 4;
 
 void main() {
   switch (exercise) {
